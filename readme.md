@@ -3,7 +3,9 @@
 一个简单的图书管理系统，包括了图书的借阅、编辑、创建、删除 和 用户的创建、评论管理等功能，使用了 laravel 5.0 框架。
 
 ## 下载
+```
 git clone https://github.com/zhangxiangliang/mnnu-libaray.git
+```
 
 ## 安装
 
@@ -35,17 +37,17 @@ git clone https://github.com/zhangxiangliang/mnnu-libaray.git
 ### 用户
 项目默认设置了 老师 、 学生 和 管理员 三种用户角色。并提供了几个默认的账户。
 #### 老师
-| 账户 | 密码 |
-|-|-|
-| teacher@taroball.net | 123456 |
+账户 | 密码
+----|----
+teacher@taroball.net | 123456
 
 #### 学生
-| 账户 | 密码 |
-|-|-|
-| xiaoer@taroball.net | 123456 |
-| xiaosi@taroball.net | 123456 |
+账户 | 密码
+----|----
+xiaoer@taroball.net | 123456
+xiaosi@taroball.net | 123456
 
 #### 管理员
-| 账户 | 密码 |
-|-|-|
-| super@taroball.net | 123456 |
+账户 | 密码
+----|----
+super@taroball.net | 123456
