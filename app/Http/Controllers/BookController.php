@@ -97,7 +97,8 @@ class BookController extends Controller
     public function create()
     {
         if(Auth::user()->isAdmin()){
-            return view('book.create');
+            $categorys = \App\Category::all();
+            return view('book.create', compact('categorys'));
         } else {
             return redirect()->back();
         }
@@ -113,7 +114,6 @@ class BookController extends Controller
     {
         $request->flash();
         $file = Input::file('fileselect');
-        
         if(!$file){
             $error = '请不要上传空图片';
             return redirect()->back()->withErrors($error);
@@ -156,7 +156,8 @@ class BookController extends Controller
     public function edit($id)
     {
         $book = Book::findOrFail($id);
-        return view('book.edit', compact('book','comments'));
+        $categorys = \App\Category::all();
+        return view('book.edit', compact('book', 'comments', 'categorys'));
     }
 
     /**

@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use APP\Book;
+use App\Book;
+use App\Category;
 use App\Comment;
 use Illuminate\Support\Facades\DB;
 
@@ -27,6 +28,12 @@ class BackController extends Controller
     {
         $books = Book::latest()->paginate(5);
         return view('back.book', compact('books'));
+    }
+
+    public function category()
+    {
+        $categorys = Category::latest()->paginate(5);
+        return view('back.category', compact('categorys'));
     }
 
     public function comment()

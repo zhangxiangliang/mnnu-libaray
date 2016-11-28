@@ -27,7 +27,7 @@
 @section('content')
     <div class="ui vertical segment">
         <div class="ui text container">
-            @if(!empty($users))
+            @if(count($users) > 0)
                 <h3 class="ui dividing header">书友</h3>
                 <div class="ui grid">
                     @foreach( $users as $user)
@@ -42,7 +42,17 @@
                     @endforeach
                 </div>
             @endif
-            @if(!empty($books))
+            @if(count($categorys) > 0)
+                <h3 class="ui dividing header">相关分类</h3>
+                @foreach ($categorys as $category)
+                    <div class="ui text container category">
+                        <a href="{{url('category',[$category->id])}}">
+                            <div class="ui {{$category->color}} inverted segment">{{$category->name}}</div>
+                        </a>
+                    </div>
+                @endforeach
+            @endif
+            @if(count($books) > 0)
                 <h3 class="ui dividing header">没有搜索到相关书籍</h3>
                 <h5>以下是推荐的图书</h5>
                 <div class="ui grid">
@@ -56,8 +66,8 @@
                         </div>
                     @endforeach
                 </div>
-            @else
-                @if(count($book_name) > 0 )
+            @endif
+            @if (count($book_name) > 0 )
                 <h3 class="ui dividing header">相关书籍名</h3>
                 <div class="ui grid">
                     @foreach($book_name as $book)
@@ -70,8 +80,8 @@
                         </div>
                     @endforeach
                 </div>
-                @endif
-                @if(count($book_content) > 0 )
+            @endif
+            @if (count($book_content) > 0 )
                 <h3 class="ui dividing header">相关内容</h3>
                 <div class="ui grid">
                     @foreach($book_content as $book)
@@ -84,8 +94,8 @@
                         </div>
                     @endforeach
                 </div>
-                @endif
-                @if(count($book_author) > 0 )
+            @endif
+            @if (count($book_author) > 0 )
                 <h3 class="ui dividing header">相关作者</h3>
                 <div class="ui grid">
                     @foreach($book_author as $book)
@@ -98,8 +108,8 @@
                         </div>
                     @endforeach
                 </div>
-                @endif
-                @if(count($book_company) > 0 )
+            @endif
+            @if (count($book_company) > 0 )
                 <h3 class="ui dividing header">相关出版社</h3>
                 <div class="ui grid">
                     @foreach($book_company as $book)
@@ -112,7 +122,6 @@
                         </div>
                     @endforeach
                 </div>
-                @endif
             @endif
         </div>
     </div>

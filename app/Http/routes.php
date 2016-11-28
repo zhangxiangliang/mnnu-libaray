@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'BookController@library');
 Route::get('book/{id}',['as' => 'show_book', 'uses' => 'BookController@show'])->where('id', '[0-9]+');
 Route::get('book', 'BookController@index');
+Route::get('category', 'CategoryController@index');
+Route::get('category/{id}', 'CategoryController@show');
 
 /*
  * 图书模块路由
@@ -72,12 +74,23 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::group(['middleware' => 'auth', 'middleware' => 'role:admin|teacher', 'prefix' => 'back'], function() {
     Route::get('/', 'BackController@index');
+
+    // 书籍管理
     Route::get('/book', 'BackController@book');
     Route::get('/book/create', 'BookController@create');
     Route::post('/book/create', 'BookController@store');
     Route::delete('/book/delete/{id}', 'BookController@destroy');
     Route::get('/book/edit/{id}', 'BookController@edit');
     Route::patch('/book/edit/{id}', 'BookController@update');
+
+    // 分类管理
+    Route::get('/category', 'BackController@category');
+    Route::get('/category/create', 'CategoryController@create');
+    Route::post('/category/create', 'CategoryController@store');
+    Route::delete('/category/delete/{id}', 'CategoryController@destroy');
+    Route::get('/category/edit/{id}', 'CategoryController@edit');
+    Route::patch('/category/edit/{id}', 'CategoryController@update');
+
 
     Route::get('/user', 'BackController@user');
     Route::get('/teacher', 'BackController@teacher');

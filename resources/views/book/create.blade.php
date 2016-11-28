@@ -50,6 +50,14 @@
                 </div>
             </div>
             <div class="field">
+                {!! Form::label('name','分类:') !!}
+                <select name="category_id" class="ui search dropdown">
+                    @foreach($categorys as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="field">
                 {!! Form::label('author','作者:') !!}
                 <div class="ui left input">
                     {!! Form::text('author', null, null) !!}

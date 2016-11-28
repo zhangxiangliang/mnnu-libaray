@@ -19,6 +19,16 @@
                 </div>
             </div>
             <div class="ui pointing dropdown link item">
+                <span class="text">分类管理</span>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    @role('admin')
+                        <a class="item" href="{{ url('back/category/create') }}">创建分类</a>
+                    @endrole
+                    <a class="item" href="{{ url('back/category') }}">分类列表</a>
+                </div>
+            </div>
+            <div class="ui pointing dropdown link item">
                 <span class="text">用户管理</span>
                 <i class="dropdown icon"></i>
                 <div class="menu">

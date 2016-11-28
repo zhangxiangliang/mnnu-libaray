@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\User;
+use App\Category;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,13 +21,13 @@ class SearchController extends Controller
         $book_author = Book::where('author', 'like', '%'.$search.'%')->get();
         $book_company = Book::where('published_company', 'like', '%'.$search.'%')->get();
         $users = User::where('name', 'like', '%'.$search.'%')->get();
-        
-        if(count($book_content) > 0 || count($book_name) > 0 || count($book_author) > 0 || count($book_company) > 0 || 
-        count($users) > 0){
-            return view('search.result', compact('book_content', 'book_name', 'book_author', 'book_company', 'users'));
-        } else {
-            $books = Book::latest()->simplePaginate(15);
-            return view('search.result', compact('books'));
+        $categorys = Category::where('name', 'like', '%'.$search.'%')->get();
+        $books = array();
+
+        if(count($book_content) == 0 && count($book_name) == 0 && count($book_author) == 0 && count($book_company) == 0 && count($users) == 0 && count($categorys)){
+            $books = Book::latest()->simplePaginate(4);
         }
+
+        return view('search.result', compact('book_content', 'book_name', 'book_author', 'book_company', 'users', 'categorys', 'books'));
     }
 }

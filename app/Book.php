@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     protected $fillable = ['name', 'author', 'cover', 'published_company',
-            'published_time', 'page', 'price', 'ISBN', 'content', 'author_intro', 'number'];
+            'published_time', 'page', 'price', 'ISBN', 'content', 'author_intro', 'number',
+            'category_id'];
 
     /*
      * Eloquent ORM
@@ -25,4 +26,12 @@ class Book extends Model
         return $this->belongsToMany('App\User', 'user_book');
     }
 
+    /*
+     * Eloquent ORM
+     * Relationships : 一对一关系，用于 book 和 category 多表
+     */
+    public function category()
+    {
+        return $this->hasOne('App\Category');
+    }
 }

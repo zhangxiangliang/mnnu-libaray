@@ -11,6 +11,7 @@
                 <a href="{{ url('/') }}" class="@yield('index') item">主页</a>
                 <a href="{{ url('book') }}" class="@yield('book') item">图书</a>
                 <a href="{{ url('user') }}" class="@yield('user') item">书友</a>
+                <a href="{{ url('category') }}" class="@yield('category') item">分类</a>
             </div>
             <div href="" class="right item inline">
                 @if(\Auth::check())
